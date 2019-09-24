@@ -23,6 +23,7 @@ import {
   ParameterDeclarationStructure,
   SourceFile,
   StructureKind,
+  Project,
 } from 'ts-morph';
 import { DEFINITIONS_FILE_HEADER } from './graphql.constants';
 
@@ -38,8 +39,7 @@ export class GraphQLAstExplorer {
     if (!documentNode) {
       return;
     }
-    const tsMorphLib = await import('ts-morph');
-    const tsAstHelper = new tsMorphLib.Project();
+    const tsAstHelper = new Project();
     const tsFile = tsAstHelper.createSourceFile(outputPath, '', {
       overwrite: true,
     });
